@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 fpmi. All rights reserved.
 //
 
+import Foundation
+
 struct Constants {
     static let standartServiceTime: Float = 30.0 // mins
     static let standartTips: [Float] = [3.0, 5.0, 7.0, 10.0]
@@ -35,7 +37,7 @@ class Review {
             tips = 0.0;
         }
         let numberOfPlaces = 2.0
-        var tipsSum = Double(self.orderSum * tips / 100);
+        let tipsSum = Double(self.orderSum * tips / 100);
         let multiplier = pow(10.0, numberOfPlaces)
         let rounded = round(tipsSum * multiplier) / multiplier
         return Float(rounded);

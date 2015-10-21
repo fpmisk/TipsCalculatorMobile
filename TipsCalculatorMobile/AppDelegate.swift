@@ -16,27 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-    
-        var rest = Restaurant();
-        rest.rating = 1;
-        rest.name = "Bungalo";
-        
-        var rev1 = Review(restaurant: rest);
-        rev1.atmosphere = 3;
-        rev1.mealQuality = 4;
-        rev1.serviceTime = 34;
-        rev1.orderSum = 25.65;
-        
-        rest.reviews.append(rev1)
-        
-        for rev: Review in rest.reviews {
-            println("Review from restaurant \"\(rest.name)\":")
-            println("\tAtmosphere (1-5): \(rev.atmosphere)")
-            println("\tMeal quality (1-5): \(rev.mealQuality)")
-            println("\tService time in minutes: \(rev.serviceTime)")
-            println("\tOrder sum: \(rev.orderSum) $")
-            println("\tTips sum: \(rev.calculateTips()) $")
-        }
+        Helper.instance
         return true
     }
 
