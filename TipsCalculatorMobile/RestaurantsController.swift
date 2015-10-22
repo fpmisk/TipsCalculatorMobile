@@ -9,18 +9,11 @@
 import UIKit
 
 class RestaurantsController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
-    @IBOutlet weak var tableView: UITableView!
-    
 
+    @IBOutlet weak var tableView: UITableView!	
+    
     @IBAction func button(sender: AnyObject) {
-        let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc : RestaurantController = storyboard.instantiateViewControllerWithIdentifier("RestID") as! RestaurantController
-        vc.addNew = true
-        
-        let navigationController = UINavigationController(rootViewController: vc)
-        
-        self.presentViewController(navigationController, animated: true, completion: nil)
+        performSegueWithIdentifier("newRest", sender: self)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,14 +39,17 @@ class RestaurantsController: UIViewController, UITableViewDataSource, UITableVie
         return cell
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        performSegueWithIdentifier("restInfo", sender: self)
+        
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "restaurantInfo" {
-            if let indexPath = self.tableView.indexPathForSelectedRow {
+        if segue.identifier == "restInfo" {
+            if let indexPath = self.tableView.indexPathForSelectedRow() {
                 let object = Helper.instance.restaurants[indexPath.row]
-                let controller = (segue.destinationViewController as! UINavigationController).topViewController as! RestaurantController
-                controller.addNew = false
-                controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
-                controller.navigationItem.leftItemsSupplementBackButton = true
+                let vc = segue.destinationViewController as RestaurantController;
+                vc.restaurant = object;
             }
         }
     }
