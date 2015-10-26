@@ -10,7 +10,7 @@ import UIKit
 
 class RestaurantController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
@@ -20,12 +20,18 @@ class RestaurantController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var restNameLbl: UILabel!
     @IBOutlet weak var restRatingLbl: UILabel!
     var restaurant: Restaurant!;
-    
+    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         restNameLbl.text? = restaurant.name
         restRatingLbl.text? = "\(restaurant.rating)"
+    }
+    
+    @IBAction func addNewReview(sender: AnyObject) {
+        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ReviewControllerID") as? ReviewController
+        vc?.restaurant = restaurant;
+        self.navigationController?.pushViewController(vc!, animated: true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -38,13 +44,22 @@ class RestaurantController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "RestaurantCell")
+        let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "restaurantReviewCellID")
         
         cell.textLabel?.text = "Order sum: \(restaurant.reviews[indexPath.row].orderSum)"
-        cell.detailTextLabel?.text = "Tips: \(restaurant.reviews[indexPath.row].calculateTips())r"
+        cell.detailTextLabel?.text = "Tips: \(restaurant.reviews[indexPath.row].calculateTips())$"
         
         return cell
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ReviewControllerID") as? ReviewController
+        vc?.review = restaurant.reviews[indexPath.row]
+        vc?.restaurant = restaurant;
+        self.navigationController?.pushViewController(vc!, animated: true)
+    }
     
+    override func viewWillAppear(animated: Bool) {
+        tableView.reloadData();
+    }
 }

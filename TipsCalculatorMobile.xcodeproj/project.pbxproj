@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		841F768B1BD83ABD009CCD65 /* NewRestaurantController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841F768A1BD83ABD009CCD65 /* NewRestaurantController.swift */; };
 		841F76AD1BD84B26009CCD65 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 841F76AC1BD84B26009CCD65 /* Main.storyboard */; };
+		8422068B1BDEB7EA003878AB /* ReviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8422068A1BDEB7EA003878AB /* ReviewController.swift */; settings = {ASSET_TAGS = (); }; };
 		843FEE891BD40E4C00A34386 /* Hepler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843FEE881BD40E4C00A34386 /* Hepler.swift */; };
 		D016A61F1BD9386F00091C35 /* RestaurantController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D016A61E1BD9386F00091C35 /* RestaurantController.swift */; };
 		D08B0EE41BD000D70015460C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08B0EE31BD000D70015460C /* AppDelegate.swift */; };
@@ -33,6 +34,7 @@
 /* Begin PBXFileReference section */
 		841F768A1BD83ABD009CCD65 /* NewRestaurantController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewRestaurantController.swift; sourceTree = "<group>"; };
 		841F76AC1BD84B26009CCD65 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		8422068A1BDEB7EA003878AB /* ReviewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewController.swift; sourceTree = "<group>"; };
 		843FEE881BD40E4C00A34386 /* Hepler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hepler.swift; sourceTree = "<group>"; };
 		D016A61E1BD9386F00091C35 /* RestaurantController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantController.swift; sourceTree = "<group>"; };
 		D08B0EDE1BD000D70015460C /* TipsCalculatorMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TipsCalculatorMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,6 +93,7 @@
 				843FEE881BD40E4C00A34386 /* Hepler.swift */,
 				D08B0F051BD0010E0015460C /* Model.swift */,
 				841F768A1BD83ABD009CCD65 /* NewRestaurantController.swift */,
+				8422068A1BDEB7EA003878AB /* ReviewController.swift */,
 				D016A61E1BD9386F00091C35 /* RestaurantController.swift */,
 				D08B0EE51BD000D70015460C /* RestaurantsController.swift */,
 				D08B0EE71BD000D70015460C /* SecondViewController.swift */,
@@ -235,6 +238,7 @@
 				D08B0EE41BD000D70015460C /* AppDelegate.swift in Sources */,
 				D08B0F061BD0010E0015460C /* Model.swift in Sources */,
 				D08B0EE61BD000D70015460C /* RestaurantsController.swift in Sources */,
+				8422068B1BDEB7EA003878AB /* ReviewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

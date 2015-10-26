@@ -13,7 +13,8 @@ class RestaurantsController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var tableView: UITableView!	
     
     @IBAction func button(sender: AnyObject) {
-        performSegueWithIdentifier("newRest", sender: self)
+        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("NewRestaurantID") as? NewRestaurantController
+        self.navigationController?.pushViewController(vc!, animated: true)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +31,7 @@ class RestaurantsController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "RestaurantCell")
+        let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "restaurantCellID")
         
         cell.textLabel?.text = Helper.instance.restaurants[indexPath.row].name
         cell.detailTextLabel?.text = "Rating: \(Helper.instance.restaurants[indexPath.row].rating) " +
@@ -40,18 +41,9 @@ class RestaurantsController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier("restInfo", sender: self)
-        
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "restInfo" {
-            if let indexPath = self.tableView.indexPathForSelectedRow() {
-                let object = Helper.instance.restaurants[indexPath.row]
-                let vc = segue.destinationViewController as RestaurantController;
-                vc.restaurant = object;
-            }
-        }
+        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("RestaurantInfoID") as? RestaurantController
+        vc?.restaurant = Helper.instance.restaurants[indexPath.row]
+        self.navigationController?.pushViewController(vc!, animated: true)
     }
     
     override func viewWillAppear(animated: Bool) {

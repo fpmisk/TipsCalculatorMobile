@@ -12,17 +12,17 @@ class NewRestaurantController: UIViewController {
     @IBOutlet weak var restaurantName: UITextField!
     @IBOutlet weak var restaurantRating: UISegmentedControl!
     
-    var addNew: Bool = true;
+    var addNew: Bool = false;
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        if addNew {
-            
-        } else {
-            
-        }
+//        let homeButton : UIBarButtonItem = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("backButton:"))
+//        self.navigationItem.leftBarButtonItem = homeButton
+    }
+    
+    func backButton(sender: AnyObject) {
+        self.navigationController?.popViewControllerAnimated(true);
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,8 +44,7 @@ class NewRestaurantController: UIViewController {
         let rest = Restaurant();
         rest.rating = restaurantRating.selectedSegmentIndex;
         rest.name = restName!;
-        Helper.instance.restaurants.append(rest)
-        dismissViewControllerAnimated(true, completion: {})
+        Helper.instance.restaurants.insert(rest, atIndex: 0)
+        self.navigationController?.popViewControllerAnimated(true);
     }
-
 }
